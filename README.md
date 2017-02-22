@@ -1,3 +1,6 @@
+# Good to know
+Le projet n'est paramétré que pour du local. J'ai créé une adresse gmail exclusivement pour ce cours, n'hésitez pas l'employer si ça vous arrange.
+
 # hapi-boilerplate
 Boilerplate Hapi utilisé pour les TP Node.JS des Licence pro
 

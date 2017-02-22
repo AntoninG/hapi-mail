@@ -12,18 +12,21 @@ const mailSender = {
         };
 
         return new Promise((resolve, reject) => {
-            mailer._transporter.sendMail(_.assignIn({
+            mailSender._transporter.sendMail(_.assignIn({
                 from    : '"' + mailSender._mailConfig.name + '" <' + mailSender._mailConfig.smtpConfig.auth.user + '>',
                 to      : recipient,
                 subject : subject
             }, context), (error, info) => {
                 if (error) {
                     reject(error);
+                    return;
                 }
+
                 resolve(info);
             });
         });
     },
+
     _sendCreation   : (user, plainPassword) => {
         let email = {
             body: {
@@ -37,6 +40,7 @@ const mailSender = {
 
         return mailSender._sendMail(email, user.email, subject);
     },
+
     _sendUpdate     : user => {
         let email = {
             body: {
@@ -50,6 +54,7 @@ const mailSender = {
 
         return mailSender._sendMail(email, user.email, subject);
     },
+
     _sendResetPassword : (user, plainPassword) => {
         let email = {
             body: {

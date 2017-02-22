@@ -41,9 +41,17 @@ module.exports.init = server => {
                     register: require('hapi-swagger')
                 }, done);
             },
+            hapiIo(done) {
+                server.register({
+                    register: require('hapi-io')
+                }, done);
+            },
             mailer(done) {
                 server.register({
-                    register: path.join(__dirname, '../../app/plugins/mail-sender')
+                    register: require(path.join(__dirname, '../../app/plugins/mail-sender')),
+                    options: {
+                        mailConfig: envConfig.mail,
+                    }
                 }, done);
             }
         }, err => {

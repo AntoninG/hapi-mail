@@ -18,5 +18,7 @@ module.exports.init = () => {
         return routes.init(server);
     }).then(() => {
         return server;
+    }).catch(err => {
+        console.log(err);
     });
 };

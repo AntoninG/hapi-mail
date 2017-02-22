@@ -2,7 +2,6 @@
 
 const _             = require('lodash');
 const env           = require('./' + (process.env.NODE_ENV || 'development'));
-const packageJson   = require('../../package.json');
 
 const all           = {
     log : {

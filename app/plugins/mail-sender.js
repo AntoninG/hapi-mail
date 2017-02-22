@@ -50,7 +50,7 @@ const mailSender = {
 
         return mailSender._sendMail(email, user.email, subject);
     },
-    _sendResetPassword: (user, plainPassword) => {
+    _sendResetPassword : (user, plainPassword) => {
         let email = {
             body: {
                 name  : user.firstName + ' ' + user.lastName,
@@ -64,9 +64,10 @@ const mailSender = {
         return mailSender._sendMail(email, user.email, subject);
     },
 
-    register: (server, option, next) => {
+    register : (server, option, next) => {
+
         mailSender._server      = server;
-        mailSender._mailConfig  = server.app.envs.mail.config;
+        mailSender._mailConfig  = option.mailConfig;
         mailSender._transporter = Nodemailer.createTransport(mailSender._mailConfig.smtpConfig);
         mailSender._mailGenerator = new Mailgen({
             theme: 'salted',
@@ -77,9 +78,9 @@ const mailSender = {
         });
 
         server.decorate('server', 'mailer', {
-            'sendCreation': mailSender._sendCreation,
-            'sendUpdate': mailSender._sendUpdate,
-            'sendResetPassword': mailSender._sendResetPassword
+            'sendCreation'      : mailSender._sendCreation,
+            'sendUpdate'        : mailSender._sendUpdate,
+            'sendResetPassword' : mailSender._sendResetPassword
         });
 
         next();

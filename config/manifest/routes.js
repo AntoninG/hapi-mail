@@ -14,6 +14,7 @@ module.exports.init = server => {
             }, done);
         }, err => {
             if (err) {
+                console.log(err);
                 reject(err);
                 return;
             }

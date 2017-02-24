@@ -29,7 +29,7 @@ exports.register = (server, options, next) => {
             method  : 'POST',
             path    : '/users/sendUpdate',
             config  : {
-                description : 'todo',
+                description : 'Send a mail to an updated user with his update credentials',
                 tags        : [ 'api' ],
                 plugins     : {
                     'hapi-io': 'send-update'
@@ -47,7 +47,7 @@ exports.register = (server, options, next) => {
             method  : 'POST',
             path    : '/users/resetPassword',
             config  : {
-                description : 'todo',
+                description : 'Send a mail to a user following his password reset request',
                 tags        : [ 'api' ],
                 plugins     : {
                     'hapi-io': 'reset-password'
